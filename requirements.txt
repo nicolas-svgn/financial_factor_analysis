@@ -1,0 +1,14 @@
+# Core libraries
+pandas>=1.5.0,<3.0.0
+numpy>=1.21.0,<2.0.0
+scikit-learn>=1.1.0,<2.0.0
+
+# Visualization
+matplotlib>=3.5.0,<4.0.0
+seaborn>=0.12.0,<1.0.0
+
+# Optional: For specific robust methods or advanced stats if added later
+# statsmodels>=0.13.0
+
+# Optional: For network analysis if added later
+# networkx>=2.8.0

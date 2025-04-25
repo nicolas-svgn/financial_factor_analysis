@@ -1,0 +1,68 @@
+{
+  "dataset": "NIFTY100",
+  "run_timestamp": "2025-04-25T00:26:02.619456",
+  "config_snapshot": {
+    "os": "<module 'os' from '/usr/lib/python3.10/os.py'>",
+    "Path": "<class 'pathlib.Path'>",
+    "logging": "<module 'logging' from '/usr/lib/python3.10/logging/__init__.py'>",
+    "PROJECT_ROOT": "/home/nicolas/Desktop/financial_factor_analysis",
+    "INPUT_DATA_DIR": "/home/nicolas/Desktop/financial_factor_analysis/data",
+    "OUTPUT_DIR": "/home/nicolas/Desktop/financial_factor_analysis/output",
+    "CORRELATION_METHOD": "pearson",
+    "EWMA_SPAN": 60,
+    "ROLLING_WINDOW_SIZES": [
+      126,
+      252
+    ],
+    "PCA_METHOD": "STANDARD",
+    "PCA_VARIANCE_THRESHOLD": 0.95,
+    "PCA_MAX_COMPONENTS": null,
+    "PCA_RANDOM_STATE": 42,
+    "HIERARCHICAL_PCA_MIN_SECTOR_SIZE": 5,
+    "VIZ_SAVE_PLOTS": true,
+    "VIZ_PLOT_FORMAT": "png",
+    "VIZ_PLOT_DPI": 300,
+    "VIZ_TOP_N_COMPONENTS": 10,
+    "VIZ_TOP_N_STOCKS_LOADINGS": 20,
+    "VIZ_FIGSIZE_GENERAL": [
+      12,
+      8
+    ],
+    "VIZ_FIGSIZE_HEATMAP": [
+      18,
+      15
+    ],
+    "VIZ_FIGSIZE_SECTOR_HEATMAP": [
+      10,
+      8
+    ],
+    "VIZ_FIGSIZE_LOADINGS": [
+      15,
+      8
+    ],
+    "VIZ_FIGSIZE_SCREE": [
+      12,
+      6
+    ],
+    "SAVE_NUMERICAL_RESULTS": true,
+    "DETAILED_FILENAMING": true,
+    "LOG_LEVEL": "INFO",
+    "LOG_FORMAT": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "LOG_TO_FILE": true,
+    "LOG_FILENAME": "financial_analysis.log"
+  },
+  "data_shape_returns": [
+    966,
+    137
+  ],
+  "data_shape_metadata": [
+    137,
+    7
+  ],
+  "time_period": {
+    "start": "2021-05-14",
+    "end": "2025-04-07"
+  },
+  "status": "COMPLETED_SUCCESS",
+  "duration_seconds": 19.24
+}

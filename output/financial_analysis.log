@@ -1,0 +1,222 @@
+2025-04-25 00:09:17,491 - root - INFO - Logging configured. Level: INFO. File: /home/nicolas/Desktop/financial_factor_analysis/output/financial_analysis.log
+2025-04-25 00:09:17,491 - __main__ - INFO - =================================================
+2025-04-25 00:09:17,491 - __main__ - INFO - === Starting Financial Factor Analysis Script ===
+2025-04-25 00:09:17,491 - __main__ - INFO - =================================================
+2025-04-25 00:09:17,491 - __main__ - INFO - Processing dataset: NIFTY100
+2025-04-25 00:09:17,491 - src.data_loader - INFO - --- Loading dataset: NIFTY100 ---
+2025-04-25 00:09:17,513 - src.data_loader - INFO - Successfully loaded returns data from: /home/nicolas/Desktop/financial_factor_analysis/data/nifty100/NIFTY100_returns_processed.csv (966 rows, 137 columns)
+2025-04-25 00:09:17,514 - src.data_loader - ERROR - Ticker column 'Symbol' not found in metadata file: /home/nicolas/Desktop/financial_factor_analysis/data/nifty100/NIFTY100_metadata.csv
+2025-04-25 00:14:06,131 - root - INFO - Logging configured. Level: INFO. File: /home/nicolas/Desktop/financial_factor_analysis/output/financial_analysis.log
+2025-04-25 00:14:45,388 - root - INFO - Logging configured. Level: INFO. File: /home/nicolas/Desktop/financial_factor_analysis/output/financial_analysis.log
+2025-04-25 00:14:45,388 - __main__ - INFO - ============================================================
+2025-04-25 00:14:45,389 - __main__ - INFO - === Starting Financial Factor Analysis Script ===
+2025-04-25 00:14:45,389 - __main__ - INFO - ============================================================
+2025-04-25 00:14:45,389 - __main__ - INFO - Configuration loaded successfully.
+2025-04-25 00:14:45,389 - __main__ - INFO - --- Processing dataset: NIFTY100 ---
+2025-04-25 00:14:45,389 - __main__ - INFO - Loading data...
+2025-04-25 00:14:45,389 - src.data_loader - INFO - --- Loading dataset: NIFTY100 ---
+2025-04-25 00:14:45,413 - src.data_loader - INFO - Successfully loaded returns data from: /home/nicolas/Desktop/financial_factor_analysis/data/nifty100/NIFTY100_returns_processed.csv (966 rows, 137 columns)
+2025-04-25 00:14:45,414 - src.data_loader - INFO - Successfully loaded metadata from: /home/nicolas/Desktop/financial_factor_analysis/data/nifty100/NIFTY100_metadata.csv (137 entries)
+2025-04-25 00:14:45,414 - __main__ - INFO - Starting analysis pipelines...
+2025-04-25 00:14:45,415 - __main__ - INFO - --- Starting Correlation Analysis for NIFTY100 ---
+2025-04-25 00:14:45,415 - src.correlation_analysis - INFO - Calculating pearson correlation matrix...
+2025-04-25 00:14:45,446 - src.correlation_analysis - INFO - Correlation matrix calculated (137x137)
+2025-04-25 00:14:45,462 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_static_correlation_matrix.csv
+2025-04-25 00:14:45,462 - src.visualization - INFO - Generating heatmap: NIFTY100 - Static Correlation Matrix (Pearson)
+2025-04-25 00:14:46,966 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/plots/NIFTY100_static_correlation_heatmap.png
+2025-04-25 00:14:46,986 - __main__ - INFO - Calculating sector correlations...
+2025-04-25 00:14:46,987 - src.correlation_analysis - INFO - Calculating within-sector and across-sector correlations using column 'sector'...
+2025-04-25 00:14:47,024 - src.correlation_analysis - INFO - Sector correlation calculations complete.
+2025-04-25 00:14:47,025 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_within_sector_correlation.csv
+2025-04-25 00:14:47,026 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_across_sector_correlation.csv
+2025-04-25 00:14:47,026 - src.visualization - INFO - Generating within-sector correlation summary plot...
+2025-04-25 00:14:47,078 - __main__ - CRITICAL - Unhandled exception during analysis pipeline for NIFTY100: keyword ha is not recognized; valid keywords are ['size', 'width', 'color', 'tickdir', 'pad', 'labelsize', 'labelcolor', 'labelfontfamily', 'zorder', 'gridOn', 'tick1On', 'tick2On', 'label1On', 'label2On', 'length', 'direction', 'left', 'bottom', 'right', 'top', 'labelleft', 'labelbottom', 'labelright', 'labeltop', 'labelrotation', 'grid_agg_filter', 'grid_alpha', 'grid_animated', 'grid_antialiased', 'grid_clip_box', 'grid_clip_on', 'grid_clip_path', 'grid_color', 'grid_dash_capstyle', 'grid_dash_joinstyle', 'grid_dashes', 'grid_data', 'grid_drawstyle', 'grid_figure', 'grid_fillstyle', 'grid_gapcolor', 'grid_gid', 'grid_in_layout', 'grid_label', 'grid_linestyle', 'grid_linewidth', 'grid_marker', 'grid_markeredgecolor', 'grid_markeredgewidth', 'grid_markerfacecolor', 'grid_markerfacecoloralt', 'grid_markersize', 'grid_markevery', 'grid_mouseover', 'grid_path_effects', 'grid_picker', 'grid_pickradius', 'grid_rasterized', 'grid_sketch_params', 'grid_snap', 'grid_solid_capstyle', 'grid_solid_joinstyle', 'grid_transform', 'grid_url', 'grid_visible', 'grid_xdata', 'grid_ydata', 'grid_zorder', 'grid_aa', 'grid_c', 'grid_ds', 'grid_ls', 'grid_lw', 'grid_mec', 'grid_mew', 'grid_mfc', 'grid_mfcalt', 'grid_ms']
+Traceback (most recent call last):
+  File "/home/nicolas/Desktop/financial_factor_analysis/main.py", line 369, in main
+    corr_success = run_correlation_pipeline(returns_df, metadata_df, dataset_key, cfg, output_dirs)
+  File "/home/nicolas/Desktop/financial_factor_analysis/main.py", line 109, in run_correlation_pipeline
+    visualization.plot_sector_correlation_summary(
+  File "/home/nicolas/Desktop/financial_factor_analysis/src/visualization.py", line 140, in plot_sector_correlation_summary
+    ax_bar.tick_params(axis='x', rotation=45, ha='right')
+  File "/home/nicolas/Desktop/financial_factor_analysis/venv/lib/python3.10/site-packages/matplotlib/axes/_base.py", line 3537, in tick_params
+    self.xaxis.set_tick_params(**xkw)
+  File "/home/nicolas/Desktop/financial_factor_analysis/venv/lib/python3.10/site-packages/matplotlib/axis.py", line 960, in set_tick_params
+    kwtrans = self._translate_tick_params(kwargs)
+  File "/home/nicolas/Desktop/financial_factor_analysis/venv/lib/python3.10/site-packages/matplotlib/axis.py", line 1109, in _translate_tick_params
+    raise ValueError(
+ValueError: keyword ha is not recognized; valid keywords are ['size', 'width', 'color', 'tickdir', 'pad', 'labelsize', 'labelcolor', 'labelfontfamily', 'zorder', 'gridOn', 'tick1On', 'tick2On', 'label1On', 'label2On', 'length', 'direction', 'left', 'bottom', 'right', 'top', 'labelleft', 'labelbottom', 'labelright', 'labeltop', 'labelrotation', 'grid_agg_filter', 'grid_alpha', 'grid_animated', 'grid_antialiased', 'grid_clip_box', 'grid_clip_on', 'grid_clip_path', 'grid_color', 'grid_dash_capstyle', 'grid_dash_joinstyle', 'grid_dashes', 'grid_data', 'grid_drawstyle', 'grid_figure', 'grid_fillstyle', 'grid_gapcolor', 'grid_gid', 'grid_in_layout', 'grid_label', 'grid_linestyle', 'grid_linewidth', 'grid_marker', 'grid_markeredgecolor', 'grid_markeredgewidth', 'grid_markerfacecolor', 'grid_markerfacecoloralt', 'grid_markersize', 'grid_markevery', 'grid_mouseover', 'grid_path_effects', 'grid_picker', 'grid_pickradius', 'grid_rasterized', 'grid_sketch_params', 'grid_snap', 'grid_solid_capstyle', 'grid_solid_joinstyle', 'grid_transform', 'grid_url', 'grid_visible', 'grid_xdata', 'grid_ydata', 'grid_zorder', 'grid_aa', 'grid_c', 'grid_ds', 'grid_ls', 'grid_lw', 'grid_mec', 'grid_mew', 'grid_mfc', 'grid_mfcalt', 'grid_ms']
+2025-04-25 00:14:47,079 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-25 00:14:47,079 - root - WARNING - Object of type <class 'type'> could not be made JSON serializable, converting to string.
+2025-04-25 00:14:47,079 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-25 00:14:47,079 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/summary_report_nifty100.json
+2025-04-25 00:14:47,079 - __main__ - INFO - Summary report saved for NIFTY100. Status: FAILED_UNHANDLED_EXCEPTION: ValueError
+2025-04-25 00:14:47,079 - __main__ - INFO - --- Finished processing dataset: NIFTY100 in 1.69 seconds ---
+2025-04-25 00:14:47,079 - __main__ - INFO - --- Processing dataset: SP500 ---
+2025-04-25 00:14:47,080 - __main__ - INFO - Loading data...
+2025-04-25 00:14:47,080 - src.data_loader - INFO - --- Loading dataset: SP500 ---
+2025-04-25 00:14:47,080 - src.data_loader - ERROR - Returns file not found: /home/nicolas/Desktop/financial_factor_analysis/data/sp500/SP500_returns_processed.csv
+2025-04-25 00:14:47,080 - src.data_loader - ERROR - Metadata file not found: /home/nicolas/Desktop/financial_factor_analysis/data/sp500/SP500_metadata.csv
+2025-04-25 00:14:47,080 - __main__ - ERROR - Failed to load returns data for SP500. Analysis cannot proceed.
+2025-04-25 00:14:47,080 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-25 00:14:47,080 - root - WARNING - Object of type <class 'type'> could not be made JSON serializable, converting to string.
+2025-04-25 00:14:47,080 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-25 00:14:47,080 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/sp500/summary_report_sp500.json
+2025-04-25 00:14:47,080 - __main__ - INFO - Summary report saved for SP500. Status: FAILED_LOAD_RETURNS
+2025-04-25 00:14:47,080 - __main__ - INFO - --- Finished processing dataset: SP500 in 0.00 seconds ---
+2025-04-25 00:14:47,080 - __main__ - INFO - ============================================================
+2025-04-25 00:14:47,080 - __main__ - INFO - === Financial Factor Analysis Script Finished ===
+2025-04-25 00:14:47,080 - __main__ - INFO - === Overall Status: FAILED ===
+2025-04-25 00:14:47,080 - __main__ - INFO - === Total Duration: 1.69 seconds ===
+2025-04-25 00:14:47,080 - __main__ - INFO - ============================================================
+2025-04-25 00:26:02,598 - root - INFO - Logging configured. Level: INFO. File: /home/nicolas/Desktop/financial_factor_analysis/output/financial_analysis.log
+2025-04-25 00:26:02,598 - __main__ - INFO - ============================================================
+2025-04-25 00:26:02,598 - __main__ - INFO - === Starting Financial Factor Analysis Script ===
+2025-04-25 00:26:02,598 - __main__ - INFO - ============================================================
+2025-04-25 00:26:02,598 - __main__ - INFO - Configuration loaded successfully.
+2025-04-25 00:26:02,598 - __main__ - INFO - --- Processing dataset: NIFTY100 ---
+2025-04-25 00:26:02,598 - __main__ - INFO - Loading data...
+2025-04-25 00:26:02,598 - src.data_loader - INFO - --- Loading dataset: NIFTY100 ---
+2025-04-25 00:26:02,618 - src.data_loader - INFO - Successfully loaded returns data from: /home/nicolas/Desktop/financial_factor_analysis/data/nifty100/NIFTY100_returns_processed.csv (966 rows, 137 columns)
+2025-04-25 00:26:02,619 - src.data_loader - INFO - Successfully loaded metadata from: /home/nicolas/Desktop/financial_factor_analysis/data/nifty100/NIFTY100_metadata.csv (137 entries)
+2025-04-25 00:26:02,619 - __main__ - INFO - Starting analysis pipelines...
+2025-04-25 00:26:02,619 - __main__ - INFO - --- Starting Correlation Analysis for NIFTY100 ---
+2025-04-25 00:26:02,620 - src.correlation_analysis - INFO - Calculating EWMA correlation matrix with span=60...
+2025-04-25 00:26:05,377 - src.correlation_analysis - INFO - EWMA correlation matrix calculated for date 2025-04-07 00:00:00 (137x137)
+2025-04-25 00:26:05,391 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_ewma_correlation_matrix_span_60.csv
+2025-04-25 00:26:05,391 - src.visualization - INFO - Generating heatmap: NIFTY100 - EWMA Correlation Matrix (Span=60)
+2025-04-25 00:26:06,996 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/plots/NIFTY100_ewma_correlation_heatmap_span_60.png
+2025-04-25 00:26:07,002 - __main__ - INFO - Calculating sector correlations using EWMA matrix...
+2025-04-25 00:26:07,003 - __main__ - WARNING - No common tickers found between EWMA correlation matrix and metadata for NIFTY100. Skipping sector analysis.
+2025-04-25 00:26:07,003 - __main__ - INFO - Calculating rolling correlation for window=126...
+2025-04-25 00:26:07,003 - src.correlation_analysis - INFO - Calculating rolling correlations with window=126...
+2025-04-25 00:26:10,701 - src.correlation_analysis - INFO - Rolling average correlation calculation complete for window=126.
+2025-04-25 00:26:10,704 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_rolling_correlation_avg_window_126.csv
+2025-04-25 00:26:10,704 - src.visualization - INFO - Generating rolling correlation plot (window=126): NIFTY100 - Average Rolling Correlation (126-Day Window)
+2025-04-25 00:26:11,105 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/plots/NIFTY100_rolling_correlation_avg_plot_window_126.png
+2025-04-25 00:26:11,112 - __main__ - INFO - Calculating rolling correlation for window=252...
+2025-04-25 00:26:11,112 - src.correlation_analysis - INFO - Calculating rolling correlations with window=252...
+2025-04-25 00:26:14,737 - src.correlation_analysis - INFO - Rolling average correlation calculation complete for window=252.
+2025-04-25 00:26:14,740 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_rolling_correlation_avg_window_252.csv
+2025-04-25 00:26:14,740 - src.visualization - INFO - Generating rolling correlation plot (window=252): NIFTY100 - Average Rolling Correlation (252-Day Window)
+2025-04-25 00:26:15,151 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/plots/NIFTY100_rolling_correlation_avg_plot_window_252.png
+2025-04-25 00:26:15,162 - __main__ - INFO - --- Correlation Analysis for NIFTY100 Finished ---
+2025-04-25 00:26:15,162 - __main__ - INFO - --- Starting PCA Analysis for NIFTY100 ---
+2025-04-25 00:26:15,163 - src.pca_analysis - INFO - Validating and preparing returns data...
+2025-04-25 00:26:15,166 - src.pca_analysis - INFO - Standardizing cleaned returns data...
+2025-04-25 00:26:15,168 - src.pca_analysis - INFO - Data standardized. Shape: (966, 137)
+2025-04-25 00:26:15,168 - __main__ - INFO - Running Standard PCA...
+2025-04-25 00:26:15,168 - src.pca_analysis - INFO - Performing Standard PCA...
+2025-04-25 00:26:15,494 - src.pca_analysis - INFO - Standard PCA completed. Optimal components: 57. Variance explained: 95.11%
+2025-04-25 00:26:15,536 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_standard_pca_loadings.csv
+2025-04-25 00:26:15,627 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_standard_pca_transformed.csv
+2025-04-25 00:26:15,627 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_standard_pca_variance.json
+2025-04-25 00:26:15,627 - src.visualization - INFO - Generating scree plot: NIFTY100 - Standard PCA Scree Plot
+2025-04-25 00:26:16,312 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/plots/NIFTY100_standard_pca_scree_plot.png
+2025-04-25 00:26:16,320 - src.visualization - INFO - Generating loadings plot for PC1: NIFTY100 - Standard PCA Loadings - Component 1
+2025-04-25 00:26:16,761 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/plots/NIFTY100_standard_pca_loadings_pc1_component_1.png
+2025-04-25 00:26:16,768 - src.visualization - INFO - Generating loadings plot for PC2: NIFTY100 - Standard PCA Loadings - Component 2
+2025-04-25 00:26:17,288 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/plots/NIFTY100_standard_pca_loadings_pc2_component_2.png
+2025-04-25 00:26:17,295 - src.visualization - INFO - Generating loadings plot for PC3: NIFTY100 - Standard PCA Loadings - Component 3
+2025-04-25 00:26:17,810 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/plots/NIFTY100_standard_pca_loadings_pc3_component_3.png
+2025-04-25 00:26:17,817 - src.visualization - INFO - Generating loadings plot for PC4: NIFTY100 - Standard PCA Loadings - Component 4
+2025-04-25 00:26:18,391 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/plots/NIFTY100_standard_pca_loadings_pc4_component_4.png
+2025-04-25 00:26:18,397 - src.visualization - INFO - Generating loadings plot for PC5: NIFTY100 - Standard PCA Loadings - Component 5
+2025-04-25 00:26:18,879 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/plots/NIFTY100_standard_pca_loadings_pc5_component_5.png
+2025-04-25 00:26:18,885 - src.visualization - INFO - Generating loadings plot for PC6: NIFTY100 - Standard PCA Loadings - Component 6
+2025-04-25 00:26:19,360 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/plots/NIFTY100_standard_pca_loadings_pc6_component_6.png
+2025-04-25 00:26:19,368 - src.visualization - INFO - Generating loadings plot for PC7: NIFTY100 - Standard PCA Loadings - Component 7
+2025-04-25 00:26:19,876 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/plots/NIFTY100_standard_pca_loadings_pc7_component_7.png
+2025-04-25 00:26:19,883 - src.visualization - INFO - Generating loadings plot for PC8: NIFTY100 - Standard PCA Loadings - Component 8
+2025-04-25 00:26:20,377 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/plots/NIFTY100_standard_pca_loadings_pc8_component_8.png
+2025-04-25 00:26:20,385 - src.visualization - INFO - Generating loadings plot for PC9: NIFTY100 - Standard PCA Loadings - Component 9
+2025-04-25 00:26:20,875 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/plots/NIFTY100_standard_pca_loadings_pc9_component_9.png
+2025-04-25 00:26:20,883 - src.visualization - INFO - Generating loadings plot for PC10: NIFTY100 - Standard PCA Loadings - Component 10
+2025-04-25 00:26:21,374 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/plots/NIFTY100_standard_pca_loadings_pc10_component_10.png
+2025-04-25 00:26:21,381 - __main__ - INFO - Running Hierarchical PCA...
+2025-04-25 00:26:21,381 - src.pca_analysis - INFO - Performing Hierarchical PCA...
+2025-04-25 00:26:21,382 - src.pca_analysis - INFO - Performing PCA for sector 'Basic Materials' (15 stocks)...
+2025-04-25 00:26:21,386 - src.pca_analysis - INFO - Sector 'Basic Materials' PCA complete. Optimal components: 12. Variance explained: 96.60%
+2025-04-25 00:26:21,386 - src.pca_analysis - INFO - Performing PCA for sector 'Communication Services' (5 stocks)...
+2025-04-25 00:26:21,388 - src.pca_analysis - INFO - Sector 'Communication Services' PCA complete. Optimal components: 5. Variance explained: 100.00%
+2025-04-25 00:26:21,388 - src.pca_analysis - INFO - Performing PCA for sector 'Consumer Cyclical' (11 stocks)...
+2025-04-25 00:26:21,391 - src.pca_analysis - INFO - Sector 'Consumer Cyclical' PCA complete. Optimal components: 10. Variance explained: 97.61%
+2025-04-25 00:26:21,391 - src.pca_analysis - INFO - Performing PCA for sector 'Consumer Defensive' (12 stocks)...
+2025-04-25 00:26:21,394 - src.pca_analysis - INFO - Sector 'Consumer Defensive' PCA complete. Optimal components: 10. Variance explained: 95.80%
+2025-04-25 00:26:21,394 - src.pca_analysis - INFO - Performing PCA for sector 'Energy' (10 stocks)...
+2025-04-25 00:26:21,396 - src.pca_analysis - INFO - Sector 'Energy' PCA complete. Optimal components: 8. Variance explained: 97.38%
+2025-04-25 00:26:21,396 - src.pca_analysis - INFO - Performing PCA for sector 'Financial Services' (25 stocks)...
+2025-04-25 00:26:21,399 - src.pca_analysis - INFO - Sector 'Financial Services' PCA complete. Optimal components: 17. Variance explained: 95.31%
+2025-04-25 00:26:21,399 - src.pca_analysis - INFO - Performing PCA for sector 'Healthcare' (13 stocks)...
+2025-04-25 00:26:21,401 - src.pca_analysis - INFO - Sector 'Healthcare' PCA complete. Optimal components: 11. Variance explained: 96.09%
+2025-04-25 00:26:21,402 - src.pca_analysis - INFO - Performing PCA for sector 'Industrials' (14 stocks)...
+2025-04-25 00:26:21,404 - src.pca_analysis - INFO - Sector 'Industrials' PCA complete. Optimal components: 12. Variance explained: 95.95%
+2025-04-25 00:26:21,404 - src.pca_analysis - INFO - Performing PCA for sector 'Real Estate' (7 stocks)...
+2025-04-25 00:26:21,407 - src.pca_analysis - INFO - Sector 'Real Estate' PCA complete. Optimal components: 6. Variance explained: 96.47%
+2025-04-25 00:26:21,407 - src.pca_analysis - INFO - Performing PCA for sector 'Technology' (10 stocks)...
+2025-04-25 00:26:21,410 - src.pca_analysis - INFO - Sector 'Technology' PCA complete. Optimal components: 8. Variance explained: 96.72%
+2025-04-25 00:26:21,410 - src.pca_analysis - WARNING - Skipping sector 'Unknown': Only 1 stocks (minimum required: 5).
+2025-04-25 00:26:21,410 - src.pca_analysis - INFO - Performing PCA for sector 'Utilities' (14 stocks)...
+2025-04-25 00:26:21,413 - src.pca_analysis - INFO - Sector 'Utilities' PCA complete. Optimal components: 11. Variance explained: 95.56%
+2025-04-25 00:26:21,413 - src.pca_analysis - INFO - Performing Stage 2 Hierarchical PCA on combined sector factors...
+2025-04-25 00:26:21,653 - src.pca_analysis - INFO - Hierarchical PCA Stage 2 complete. Optimal global components: 63. Variance explained: 95.18%
+2025-04-25 00:26:21,663 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_global_loadings.csv
+2025-04-25 00:26:21,737 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_global_transformed.csv
+2025-04-25 00:26:21,737 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_global_variance.json
+2025-04-25 00:26:21,751 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_loadings_sector_basic_materials.csv
+2025-04-25 00:26:21,762 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_transformed_sector_basic_materials.csv
+2025-04-25 00:26:21,762 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_variance_sector_basic_materials.json
+2025-04-25 00:26:21,762 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_loadings_sector_communication_services.csv
+2025-04-25 00:26:21,767 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_transformed_sector_communication_services.csv
+2025-04-25 00:26:21,767 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_variance_sector_communication_services.json
+2025-04-25 00:26:21,767 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_loadings_sector_consumer_cyclical.csv
+2025-04-25 00:26:21,775 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_transformed_sector_consumer_cyclical.csv
+2025-04-25 00:26:21,775 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_variance_sector_consumer_cyclical.json
+2025-04-25 00:26:21,775 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_loadings_sector_consumer_defensive.csv
+2025-04-25 00:26:21,783 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_transformed_sector_consumer_defensive.csv
+2025-04-25 00:26:21,783 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_variance_sector_consumer_defensive.json
+2025-04-25 00:26:21,783 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_loadings_sector_energy.csv
+2025-04-25 00:26:21,789 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_transformed_sector_energy.csv
+2025-04-25 00:26:21,789 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_variance_sector_energy.json
+2025-04-25 00:26:21,790 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_loadings_sector_financial_services.csv
+2025-04-25 00:26:21,801 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_transformed_sector_financial_services.csv
+2025-04-25 00:26:21,802 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_variance_sector_financial_services.json
+2025-04-25 00:26:21,802 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_loadings_sector_healthcare.csv
+2025-04-25 00:26:21,810 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_transformed_sector_healthcare.csv
+2025-04-25 00:26:21,810 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_variance_sector_healthcare.json
+2025-04-25 00:26:21,811 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_loadings_sector_industrials.csv
+2025-04-25 00:26:21,819 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_transformed_sector_industrials.csv
+2025-04-25 00:26:21,819 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_variance_sector_industrials.json
+2025-04-25 00:26:21,820 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_loadings_sector_real_estate.csv
+2025-04-25 00:26:21,824 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_transformed_sector_real_estate.csv
+2025-04-25 00:26:21,825 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_variance_sector_real_estate.json
+2025-04-25 00:26:21,825 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_loadings_sector_technology.csv
+2025-04-25 00:26:21,831 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_transformed_sector_technology.csv
+2025-04-25 00:26:21,831 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_variance_sector_technology.json
+2025-04-25 00:26:21,831 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_loadings_sector_utilities.csv
+2025-04-25 00:26:21,839 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_transformed_sector_utilities.csv
+2025-04-25 00:26:21,840 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/pca/numerical/NIFTY100_hierarchical_pca_sector_variance_sector_utilities.json
+2025-04-25 00:26:21,840 - __main__ - WARNING - Hierarchical PCA plotting functions need implementation in visualization.py
+2025-04-25 00:26:21,840 - __main__ - INFO - --- PCA Analysis for NIFTY100 Finished ---
+2025-04-25 00:26:21,840 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-25 00:26:21,840 - root - WARNING - Object of type <class 'type'> could not be made JSON serializable, converting to string.
+2025-04-25 00:26:21,840 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-25 00:26:21,840 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/summary_report_nifty100.json
+2025-04-25 00:26:21,840 - __main__ - INFO - Summary report saved for NIFTY100. Status: COMPLETED_SUCCESS
+2025-04-25 00:26:21,840 - __main__ - INFO - --- Finished processing dataset: NIFTY100 in 19.24 seconds ---
+2025-04-25 00:26:21,840 - __main__ - INFO - --- Processing dataset: SP500 ---
+2025-04-25 00:26:21,840 - __main__ - INFO - Loading data...
+2025-04-25 00:26:21,841 - src.data_loader - INFO - --- Loading dataset: SP500 ---
+2025-04-25 00:26:21,841 - src.data_loader - ERROR - Returns file not found: /home/nicolas/Desktop/financial_factor_analysis/data/sp500/SP500_returns_processed.csv
+2025-04-25 00:26:21,841 - src.data_loader - ERROR - Metadata file not found: /home/nicolas/Desktop/financial_factor_analysis/data/sp500/SP500_metadata.csv
+2025-04-25 00:26:21,841 - __main__ - ERROR - Failed to load returns data for SP500. Analysis cannot proceed.
+2025-04-25 00:26:21,841 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-25 00:26:21,841 - root - WARNING - Object of type <class 'type'> could not be made JSON serializable, converting to string.
+2025-04-25 00:26:21,841 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-25 00:26:21,841 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/sp500/summary_report_sp500.json
+2025-04-25 00:26:21,841 - __main__ - INFO - Summary report saved for SP500. Status: FAILED_LOAD_RETURNS
+2025-04-25 00:26:21,841 - __main__ - INFO - --- Finished processing dataset: SP500 in 0.00 seconds ---
+2025-04-25 00:26:21,841 - __main__ - INFO - ============================================================
+2025-04-25 00:26:21,841 - __main__ - INFO - === Financial Factor Analysis Script Finished ===
+2025-04-25 00:26:21,841 - __main__ - INFO - === Overall Status: FAILED ===
+2025-04-25 00:26:21,841 - __main__ - INFO - === Total Duration: 19.24 seconds ===
+2025-04-25 00:26:21,841 - __main__ - INFO - ============================================================
