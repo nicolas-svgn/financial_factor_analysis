@@ -220,3 +220,88 @@ ValueError: keyword ha is not recognized; valid keywords are ['size', 'width', '
 2025-04-25 00:26:21,841 - __main__ - INFO - === Overall Status: FAILED ===
 2025-04-25 00:26:21,841 - __main__ - INFO - === Total Duration: 19.24 seconds ===
 2025-04-25 00:26:21,841 - __main__ - INFO - ============================================================
+2025-04-26 21:53:13,189 - root - INFO - Logging configured. Level: INFO. File: /home/nicolas/Desktop/financial_factor_analysis/output/financial_analysis.log
+2025-04-26 21:53:13,189 - __main__ - INFO - ============================================================
+2025-04-26 21:53:13,189 - __main__ - INFO - === Starting Financial Factor Analysis Script ===
+2025-04-26 21:53:13,189 - __main__ - INFO - ============================================================
+2025-04-26 21:53:13,189 - __main__ - INFO - Configuration loaded successfully.
+2025-04-26 21:53:13,189 - __main__ - INFO - --- Processing dataset: NIFTY100 ---
+2025-04-26 21:53:13,189 - __main__ - INFO - Loading data...
+2025-04-26 21:53:13,189 - src.data_loader - INFO - --- Loading dataset: NIFTY100 ---
+2025-04-26 21:53:13,212 - src.data_loader - INFO - Successfully loaded returns data from: /home/nicolas/Desktop/financial_factor_analysis/data/nifty100/NIFTY100_returns_processed.csv (966 rows, 137 columns)
+2025-04-26 21:53:13,213 - src.data_loader - INFO - Successfully loaded metadata from: /home/nicolas/Desktop/financial_factor_analysis/data/nifty100/NIFTY100_metadata.csv (137 entries)
+2025-04-26 21:53:13,213 - __main__ - INFO - Starting analysis pipelines...
+2025-04-26 21:53:13,214 - __main__ - INFO - --- Starting Correlation Analysis for NIFTY100 ---
+2025-04-26 21:53:13,214 - src.correlation_analysis - INFO - Calculating EWMA correlation matrix with span=60 (for last date)...
+2025-04-26 21:53:16,107 - src.correlation_analysis - INFO - EWMA correlation matrix calculated for date 2025-04-07 00:00:00 (137x137)
+2025-04-26 21:53:16,128 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_ewma_correlation_matrix_span_60.csv
+2025-04-26 21:53:16,128 - src.visualization - INFO - Generating heatmap: NIFTY100 - EWMA Correlation Matrix (Span=60)
+2025-04-26 21:53:17,607 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/plots/NIFTY100_ewma_correlation_heatmap_span_60.png
+2025-04-26 21:53:17,607 - __main__ - INFO - Calculating sector correlations using EWMA matrix...
+2025-04-26 21:53:17,609 - src.correlation_analysis - INFO - Calculating within-sector and across-sector correlations using column 'sector'...
+2025-04-26 21:53:17,642 - src.correlation_analysis - INFO - Sector correlation calculations complete.
+2025-04-26 21:53:17,643 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_within_sector_correlation_ewma_span_60.csv
+2025-04-26 21:53:17,643 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_across_sector_correlation_ewma_span_60.csv
+2025-04-26 21:53:17,643 - src.visualization - INFO - Generating within-sector correlation summary plot...
+2025-04-26 21:53:17,944 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/plots/within_sector_correlation_summary.png
+2025-04-26 21:53:17,944 - src.visualization - INFO - Generating across-sector correlation heatmap...
+2025-04-26 21:53:18,385 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/plots/across_sector_correlation_heatmap.png
+2025-04-26 21:53:18,385 - __main__ - INFO - Calculating rolling correlation for window=126...
+2025-04-26 21:53:18,385 - __main__ - CRITICAL - Unhandled exception during analysis pipeline for NIFTY100: calculate_rolling_window_ewma_correlation() missing 1 required positional argument: 'span'
+Traceback (most recent call last):
+  File "/home/nicolas/Desktop/financial_factor_analysis/main.py", line 414, in main
+    corr_success = run_correlation_pipeline(returns_df, metadata_df, dataset_key, cfg, output_dirs)
+  File "/home/nicolas/Desktop/financial_factor_analysis/main.py", line 151, in run_correlation_pipeline
+    avg_rolling_corr = correlation_analysis.calculate_rolling_window_ewma_correlation(
+TypeError: calculate_rolling_window_ewma_correlation() missing 1 required positional argument: 'span'
+2025-04-26 21:53:18,386 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-26 21:53:18,386 - root - WARNING - Object of type <class 'type'> could not be made JSON serializable, converting to string.
+2025-04-26 21:53:18,386 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-26 21:53:18,386 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/summary_report_nifty100.json
+2025-04-26 21:53:18,386 - __main__ - INFO - Summary report saved for NIFTY100. Status: FAILED_UNHANDLED_EXCEPTION: TypeError
+2025-04-26 21:53:18,386 - __main__ - INFO - --- Finished processing dataset: NIFTY100 in 5.20 seconds ---
+2025-04-26 21:53:18,386 - __main__ - INFO - --- Processing dataset: SP500 ---
+2025-04-26 21:53:18,387 - __main__ - INFO - Loading data...
+2025-04-26 21:53:18,387 - src.data_loader - INFO - --- Loading dataset: SP500 ---
+2025-04-26 21:53:18,387 - src.data_loader - ERROR - Returns file not found: /home/nicolas/Desktop/financial_factor_analysis/data/sp500/SP500_returns_processed.csv
+2025-04-26 21:53:18,387 - src.data_loader - ERROR - Metadata file not found: /home/nicolas/Desktop/financial_factor_analysis/data/sp500/SP500_metadata.csv
+2025-04-26 21:53:18,387 - __main__ - ERROR - Failed to load returns data for SP500. Analysis cannot proceed.
+2025-04-26 21:53:18,387 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-26 21:53:18,387 - root - WARNING - Object of type <class 'type'> could not be made JSON serializable, converting to string.
+2025-04-26 21:53:18,387 - root - WARNING - Object of type <class 'module'> could not be made JSON serializable, converting to string.
+2025-04-26 21:53:18,387 - root - INFO - Dictionary saved to JSON: /home/nicolas/Desktop/financial_factor_analysis/output/sp500/summary_report_sp500.json
+2025-04-26 21:53:18,387 - __main__ - INFO - Summary report saved for SP500. Status: FAILED_LOAD_RETURNS
+2025-04-26 21:53:18,387 - __main__ - INFO - --- Finished processing dataset: SP500 in 0.00 seconds ---
+2025-04-26 21:53:18,387 - __main__ - INFO - ============================================================
+2025-04-26 21:53:18,387 - __main__ - INFO - === Financial Factor Analysis Script Finished ===
+2025-04-26 21:53:18,387 - __main__ - INFO - === Overall Status: FAILED ===
+2025-04-26 21:53:18,387 - __main__ - INFO - === Total Duration: 5.20 seconds ===
+2025-04-26 21:53:18,387 - __main__ - INFO - ============================================================
+2025-04-26 22:30:59,950 - root - INFO - Logging configured. Level: INFO. File: /home/nicolas/Desktop/financial_factor_analysis/output/financial_analysis.log
+2025-04-26 22:30:59,951 - __main__ - INFO - ============================================================
+2025-04-26 22:30:59,951 - __main__ - INFO - === Starting Financial Factor Analysis Script ===
+2025-04-26 22:30:59,951 - __main__ - INFO - ============================================================
+2025-04-26 22:30:59,951 - __main__ - INFO - Configuration loaded successfully.
+2025-04-26 22:30:59,951 - __main__ - INFO - --- Processing dataset: NIFTY100 ---
+2025-04-26 22:30:59,951 - __main__ - INFO - Loading data...
+2025-04-26 22:30:59,951 - src.data_loader - INFO - --- Loading dataset: NIFTY100 ---
+2025-04-26 22:30:59,970 - src.data_loader - INFO - Successfully loaded returns data from: /home/nicolas/Desktop/financial_factor_analysis/data/nifty100/NIFTY100_returns_processed.csv (966 rows, 137 columns)
+2025-04-26 22:30:59,971 - src.data_loader - INFO - Successfully loaded metadata from: /home/nicolas/Desktop/financial_factor_analysis/data/nifty100/NIFTY100_metadata.csv (137 entries)
+2025-04-26 22:30:59,971 - __main__ - INFO - Starting analysis pipelines...
+2025-04-26 22:30:59,971 - __main__ - INFO - --- Starting Correlation Analysis for NIFTY100 ---
+2025-04-26 22:30:59,972 - src.correlation_analysis - INFO - Calculating EWMA correlation matrix with span=60 (for last date)...
+2025-04-26 22:31:02,815 - src.correlation_analysis - INFO - EWMA correlation matrix calculated for date 2025-04-07 00:00:00 (137x137)
+2025-04-26 22:31:02,835 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_ewma_correlation_matrix_span_60.csv
+2025-04-26 22:31:02,835 - src.visualization - INFO - Generating heatmap: NIFTY100 - EWMA Correlation Matrix (Span=60)
+2025-04-26 22:31:04,262 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/plots/NIFTY100_ewma_correlation_heatmap_span_60.png
+2025-04-26 22:31:04,262 - __main__ - INFO - Calculating sector correlations using EWMA matrix...
+2025-04-26 22:31:04,263 - src.correlation_analysis - INFO - Calculating within-sector and across-sector correlations using column 'sector'...
+2025-04-26 22:31:04,295 - src.correlation_analysis - INFO - Sector correlation calculations complete.
+2025-04-26 22:31:04,296 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_within_sector_correlation_ewma_span_60.csv
+2025-04-26 22:31:04,297 - root - INFO - DataFrame saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/numerical/NIFTY100_across_sector_correlation_ewma_span_60.csv
+2025-04-26 22:31:04,297 - src.visualization - INFO - Generating within-sector correlation summary plot...
+2025-04-26 22:31:04,597 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/plots/within_sector_correlation_summary.png
+2025-04-26 22:31:04,597 - src.visualization - INFO - Generating across-sector correlation heatmap...
+2025-04-26 22:31:05,033 - root - INFO - Plot saved to: /home/nicolas/Desktop/financial_factor_analysis/output/nifty100/correlation/plots/across_sector_correlation_heatmap.png
+2025-04-26 22:31:05,033 - __main__ - INFO - Calculating rolling correlation for window=126, span=60...
+2025-04-26 22:31:05,033 - src.correlation_analysis - INFO - Calculating rolling window average EWMA correlation with window=126, span=60...

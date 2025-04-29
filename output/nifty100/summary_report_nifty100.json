@@ -1,6 +1,6 @@
 {
   "dataset": "NIFTY100",
-  "run_timestamp": "2025-04-25T00:26:02.619456",
+  "run_timestamp": "2025-04-26T21:53:13.213643",
   "config_snapshot": {
     "os": "<module 'os' from '/usr/lib/python3.10/os.py'>",
     "Path": "<class 'pathlib.Path'>",
@@ -63,6 +63,6 @@
     "start": "2021-05-14",
     "end": "2025-04-07"
   },
-  "status": "COMPLETED_SUCCESS",
-  "duration_seconds": 19.24
+  "status": "FAILED_UNHANDLED_EXCEPTION: TypeError",
+  "duration_seconds": 5.2
 }

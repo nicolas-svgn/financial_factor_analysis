@@ -2,8 +2,7 @@ import pandas as pd
 from pathlib import Path
 import logging
 
-# Get the logger instance from the main script or configure one here
-# Assuming logger is configured in main.py or utils.py
+# Get the logger instance from the main script 
 logger = logging.getLogger(__name__)
 
 def load_returns_data(file_path: Path) -> pd.DataFrame | None:
@@ -22,10 +21,9 @@ def load_returns_data(file_path: Path) -> pd.DataFrame | None:
         return None
     try:
         returns_df = pd.read_csv(file_path, index_col=0, parse_dates=True)
-        # Optional: Basic validation like checking for datetime index
         if not isinstance(returns_df.index, pd.DatetimeIndex):
             logger.warning(f"Index of {file_path} is not DatetimeIndex. Attempting conversion.")
-            # Attempt conversion or raise error depending on strictness needed
+            # Attempt conversion or raise error 
             returns_df.index = pd.to_datetime(returns_df.index)
         logger.info(f"Successfully loaded returns data from: {file_path} "
                     f"({returns_df.shape[0]} rows, {returns_df.shape[1]} columns)")

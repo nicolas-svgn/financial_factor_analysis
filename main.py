@@ -43,10 +43,10 @@ logger = logging.getLogger(__name__) # Get logger instance
 # --- Pipeline Functions ---
 
 def run_correlation_pipeline(returns_df: pd.DataFrame,
-                             metadata_df: Optional[pd.DataFrame], # Use Optional from typing
+                             metadata_df: Optional[pd.DataFrame], 
                              dataset_key: str,
                              cfg: dict,
-                             dirs: Dict[str, Path]): # Use Dict from typing
+                             dirs: Dict[str, Path]): 
     """
     Runs the full correlation analysis pipeline for a single dataset,
     using EWMA for the primary matrix analysis.
@@ -70,7 +70,6 @@ def run_correlation_pipeline(returns_df: pd.DataFrame,
     # Ensure returns_df has no NaNs before EWMA calculation
     if returns_df.isnull().values.any():
          logger.warning(f"NaNs detected in returns data for {dataset_key} before EWMA. Attempting ffill/fillna(0).")
-         # Apply cleaning similar to PCAnalyzer's prep step if needed
          returns_df_cleaned = returns_df.ffill().fillna(0)
          if returns_df_cleaned.isnull().values.any():
               logger.error(f"Could not clean NaNs from returns data for {dataset_key}. Skipping EWMA.")
@@ -79,14 +78,13 @@ def run_correlation_pipeline(returns_df: pd.DataFrame,
          returns_df_cleaned = returns_df # Use original if already clean
 
     ewma_corr_matrix = correlation_analysis.calculate_ewma_correlation_matrix(
-        returns_df=returns_df_cleaned, # Use cleaned data
+        returns_df=returns_df_cleaned, 
         span=ewma_span
     )
 
     if ewma_corr_matrix is None:
         logger.error(f"EWMA correlation calculation failed for {dataset_key} (span={ewma_span}). Skipping dependent steps.")
-        return False # Indicate failure
-
+        return False 
     # Save and Plot EWMA Matrix
     ewma_params = {"span": ewma_span}
     if cfg.get('SAVE_NUMERICAL_RESULTS', True):
@@ -146,10 +144,10 @@ def run_correlation_pipeline(returns_df: pd.DataFrame,
 
     # --- Rolling Correlations (Independent of EWMA/Static choice above) ---
     for window in cfg.get('ROLLING_WINDOW_SIZES', []):
-        logger.info(f"Calculating rolling correlation for window={window}...")
+        logger.info(f"Calculating rolling correlation for window={window}, span={ewma_span}...")
         # Use the original (or cleaned) returns_df for rolling calculation
-        avg_rolling_corr = correlation_analysis.calculate_rolling_correlations(
-            returns_df=returns_df_cleaned, window=window # Use cleaned data here too
+        avg_rolling_corr = correlation_analysis.calculate_rolling_window_ewma_correlation(
+            returns_df=returns_df_cleaned, window=window, span=ewma_span # Use cleaned data here too
         )
         if avg_rolling_corr is not None:
             params = {"window": window}
@@ -170,17 +168,6 @@ def run_correlation_pipeline(returns_df: pd.DataFrame,
             logger.warning(f"Rolling correlation calculation failed for window={window}.")
             # Don't necessarily mark overall as failed, but log it
             analysis_successful = False if analysis_successful else False # Keep existing status if already failed
-
-    # --- Optional: Calculate and save static Pearson matrix separately ---
-    # You might still want the long-term average correlation for comparison
-    # if cfg.get('CALCULATE_STATIC_PEARSON_TOO', False): # Add this flag to config if needed
-    #     static_corr_matrix = correlation_analysis.calculate_correlation_matrix(
-    #         returns_df, method='pearson'
-    #     )
-    #     if static_corr_matrix is not None:
-    #         fname_static = utils.generate_filename(f"{dataset_key}_static_pearson_correlation_matrix", extension="csv")
-    #         utils.save_dataframe(static_corr_matrix, dirs['corr_num'] / fname_static)
-            # Optionally plot it too
 
     logger.info(f"--- Correlation Analysis for {dataset_key} Finished ---")
     return analysis_successful

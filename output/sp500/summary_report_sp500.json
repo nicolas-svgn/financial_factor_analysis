@@ -1,6 +1,6 @@
 {
   "dataset": "SP500",
-  "run_timestamp": "2025-04-25T00:26:21.841158",
+  "run_timestamp": "2025-04-26T21:53:18.387218",
   "config_snapshot": {
     "os": "<module 'os' from '/usr/lib/python3.10/os.py'>",
     "Path": "<class 'pathlib.Path'>",

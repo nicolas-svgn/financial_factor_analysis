@@ -113,7 +113,6 @@ def convert_to_serializable(obj):
         return {k: convert_to_serializable(v) for k, v in obj.items()}
     elif isinstance(obj, list):
         return [convert_to_serializable(x) for x in obj]
-    # Add more type conversions if needed
     try:
         # Attempt default serialization for unknown types
         json.dumps(obj)
