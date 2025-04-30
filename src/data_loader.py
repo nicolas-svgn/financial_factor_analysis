@@ -1,11 +1,12 @@
 import pandas as pd
 from pathlib import Path
 import logging
+from typing import Dict, Optional, List, Tuple, Any
 
 # Get the logger instance from the main script 
 logger = logging.getLogger(__name__)
 
-def load_returns_data(file_path: Path) -> pd.DataFrame | None:
+def load_returns_data(file_path: Path) -> Optional[pd.DataFrame]:
     """
     Loads returns data from a CSV file.
 
@@ -32,7 +33,7 @@ def load_returns_data(file_path: Path) -> pd.DataFrame | None:
         logger.error(f"Failed to load returns data from {file_path}: {e}", exc_info=True)
         return None
 
-def load_metadata(file_path: Path, ticker_col: str) -> pd.DataFrame | None:
+def load_metadata(file_path: Path, ticker_col: str) -> Optional[pd.DataFrame]:
     """
     Loads metadata from a CSV file.
 
@@ -62,7 +63,7 @@ def load_metadata(file_path: Path, ticker_col: str) -> pd.DataFrame | None:
         logger.error(f"Failed to load metadata from {file_path}: {e}", exc_info=True)
         return None
 
-def get_dataset_paths(config: dict, dataset_key: str) -> tuple[Path | None, Path | None]:
+def get_dataset_paths(config: dict, dataset_key: str) -> tuple[Optional[Path], Optional[Path]]:
     """
     Constructs the full paths for a dataset's returns and metadata files.
 
@@ -86,7 +87,7 @@ def get_dataset_paths(config: dict, dataset_key: str) -> tuple[Path | None, Path
 
     return returns_file, metadata_file
 
-def load_dataset(config: dict, dataset_key: str) -> tuple[pd.DataFrame | None, pd.DataFrame | None]:
+def load_dataset(config: dict, dataset_key: str) -> tuple[Optional[pd.DataFrame], Optional[pd.DataFrame]]:
     """
     Loads returns and metadata for a specific dataset defined in the config.
 

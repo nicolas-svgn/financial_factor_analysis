@@ -4,22 +4,18 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Union # Ensure necessary types are imported
+from typing import Dict, List, Optional, Tuple, Union 
 
-# Use relative import for utils within the same package (src)
 try:
     from . import utils
 except ImportError:
-    # Fallback for scenarios where the script might be run differently
-    # (e.g., directly for testing, though not recommended for the project structure)
     import utils
     print("Warning: Using fallback import for utils. Ensure running from project root.")
 
 logger = logging.getLogger(__name__)
 
 # --- Plotting Style Configuration ---
-# Central place to set style defaults if desired, or rely on external settings
-plt.style.use('seaborn-v0_8-whitegrid') # Example style
+plt.style.use('seaborn-v0_8-whitegrid') 
 
 # --- Correlation Plots ---
 
@@ -33,7 +29,7 @@ def plot_correlation_heatmap(corr_matrix: pd.DataFrame,
                              annot: bool = False,
                              save_plot: bool = True,
                              fmt: str = ".2f",
-                             **kwargs): # Allow passing extra kwargs to heatmap
+                             **kwargs): 
     """
     Plots and saves a heatmap of a correlation matrix.
 
@@ -61,17 +57,16 @@ def plot_correlation_heatmap(corr_matrix: pd.DataFrame,
                     cmap=cmap,
                     vmin=vmin,
                     vmax=vmax,
-                    square=False, # Allow non-square aspect ratio
+                    square=False, 
                     annot=annot,
                     fmt=fmt,
                     linewidths=0.5,
-                    linecolor='lightgrey', # Faint lines between cells
+                    linecolor='lightgrey', 
                     cbar_kws={"shrink": 0.8, "label": "Correlation Coefficient"},
                     ax=ax,
-                    **kwargs) # Pass extra arguments
+                    **kwargs) 
         ax.set_title(title, fontsize=16, pad=20)
 
-        # Adjust tick labels for readability based on matrix size
         num_ticks = len(corr_matrix)
         if num_ticks > 50:
             ax.tick_params(axis='x', labelsize=8, rotation=90)
@@ -79,22 +74,22 @@ def plot_correlation_heatmap(corr_matrix: pd.DataFrame,
         elif num_ticks > 10:
             ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right', fontsize=10)
             ax.set_yticklabels(ax.get_yticklabels(), rotation=0, fontsize=10)
-        else: # Keep default for small matrices
+        else: 
             ax.tick_params(axis='x', rotation=45, ha='right')
             ax.tick_params(axis='y', rotation=0)
 
 
-        plt.tight_layout(pad=1.5) # Add padding
+        plt.tight_layout(pad=1.5) 
 
         if save_plot:
-            utils.save_plot(fig, output_path) # utils handles directory creation
+            utils.save_plot(fig, output_path) 
         else:
-            plt.show() # Show plot if not saving
+            plt.show() 
 
     except Exception as e:
         logger.error(f"Error generating heatmap '{title}': {e}", exc_info=True)
     finally:
-        plt.close(fig) # Ensure figure is closed
+        plt.close(fig) 
 
 
 def plot_rolling_correlation(rolling_corr_series: pd.Series,
